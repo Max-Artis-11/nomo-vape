@@ -1,22 +1,29 @@
 {
   "expo": {
-    "name": "Sober-Step-v2",
-    "slug": "Sober-Step-v2",
+    "name": "Sober Step",
+    "slug": "Sober-Step",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "soberstepv2",
-    "userInterfaceStyle": "automatic",
+    "scheme": "soberstep",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "backgroundColor": "#ffffff",
+      "bundleIdentifier": "com.maxplus.soberstep"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#FFFFFF"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.maxplus.soberstep",
+      "statusBar": {
+        "backgroundColor": "#FFFFFF",
+        "barStyle": "dark-content"
+      }
     },
     "web": {
       "bundler": "metro",
@@ -31,12 +38,26 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#ffffff",
+          "statusBar": {
+            "style": "light",
+            "backgroundColor": "#000000"
+          }
         }
-      ]
+      ],
+      "expo-font",
+      "expo-video",
+      "expo-web-browser",
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "fb1b27ea-3cbd-464a-86f2-cea83d38ced4"
+      }
     }
   }
 }
