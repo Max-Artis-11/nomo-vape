@@ -3,16 +3,17 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Slot, useRouter } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import {
+  ActivityIndicator,
   Animated,
   Dimensions,
   StyleSheet,
-  Text
+  Text,
+  View,
 } from "react-native";
 import ConfettiCannon from "react-native-confetti-cannon";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { supabase } from "../lib/supabase";
 
-// 50 positive messages to cycle through
 const POSITIVE_MESSAGES = [
   "You are stronger than you think",
   "Great things are coming your way",
@@ -126,12 +127,14 @@ export default function RootLayout() {
   const splashAnim = useRef(new Animated.Value(0)).current;
   const [messageIndex, setMessageIndex] = useState(0);
 
-  // Load & update message index across app restarts
+  // Cycle messages
   useEffect(() => {
     const loadMessageIndex = async () => {
       try {
         const savedIndex = await AsyncStorage.getItem("splashMessageIndex");
-        let nextIndex = savedIndex ? (parseInt(savedIndex, 10) + 1) % POSITIVE_MESSAGES.length : 0;
+        let nextIndex = savedIndex
+          ? (parseInt(savedIndex, 10) + 1) % POSITIVE_MESSAGES.length
+          : 0;
 
         setMessageIndex(nextIndex);
         await AsyncStorage.setItem("splashMessageIndex", String(nextIndex));
@@ -140,9 +143,7 @@ export default function RootLayout() {
       }
     };
 
-    if (showSplash) {
-      loadMessageIndex();
-    }
+    if (showSplash) loadMessageIndex();
   }, [showSplash]);
 
   useEffect(() => {
@@ -152,25 +153,29 @@ export default function RootLayout() {
           toValue: 1,
           duration: 600,
           useNativeDriver: true,
-        }).start(() => {
-          setShowSplash(false);
-        });
-      }, 3000); // splash duration
+        }).start(() => setShowSplash(false));
+      }, 3000);
 
       return () => clearTimeout(timer);
     }
   }, [showSplash]);
 
-  // --- Session init logic ---
+  // --- Auth/session logic ---
   useEffect(() => {
     const initSession = async () => {
       try {
         const { data, error } = await supabase.auth.getSession();
         if (error) console.error("Error getting session:", error.message);
 
-        setSession(data.session);
+        if (data?.session) {
+          console.log("Initial session found:", data.session.user?.id);
+          setSession(data.session);
+        } else {
+          setSession(null);
+        }
       } catch (err) {
         console.error("Unexpected error getting session:", err);
+        setSession(null);
       } finally {
         setLoading(false);
       }
@@ -178,28 +183,28 @@ export default function RootLayout() {
 
     initSession();
 
+    // Subscribe to auth changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      console.log("Auth state change:", _event);
       setSession(newSession);
     });
 
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
     if (!loading && !showSplash) {
-      if (session) {
-        router.replace("/(tabs)/checkin"); // logged in → tabs
+      if (session?.user) {
+        router.replace("/(tabs)/checkin");
       } else {
-        router.replace("/(auth)/SignIn"); // not logged in → sign in
+        router.replace("/(auth)/SignIn");
       }
     }
   }, [loading, session, showSplash]);
 
-  // --- Early return: Splash screen ---
+  // --- Splash screen ---
   if (showSplash) {
     return (
       <Animated.View
@@ -220,7 +225,6 @@ export default function RootLayout() {
           },
         ]}
       >
-        {/* Overlay Text */}
         <Text
           style={{
             color: "#228B22",
@@ -233,7 +237,6 @@ export default function RootLayout() {
           {POSITIVE_MESSAGES[messageIndex]}
         </Text>
 
-        {/* Confetti Cannon - fires once */}
         <ConfettiCannon
           count={80}
           origin={{
@@ -249,7 +252,26 @@ export default function RootLayout() {
     );
   }
 
-  // --- Default: normal app render ---
+  // --- Loading state (while checking session) ---
+  if (loading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "white",
+        }}
+      >
+        <ActivityIndicator size="large" color="#228B22" />
+        <Text style={{ marginTop: 12, fontSize: 16, color: "#228B22" }}>
+          Loading...
+        </Text>
+      </View>
+    );
+  }
+
+  // --- Normal app render ---
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>

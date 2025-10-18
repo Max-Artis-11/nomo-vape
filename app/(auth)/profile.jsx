@@ -138,7 +138,7 @@ export default function Profile() {
         <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
           <Text style={{ fontSize: 18, fontWeight: '800', color: '#2E2E2E', marginBottom: 8 }}>My journey</Text>
           <Text style={{ fontSize: 16, fontWeight: '600', color: '#6F7985' }}>
-            I am sober since {formatDate(userData.createdAt)}
+            I am vape free since {formatDate(userData.createdAt)}
           </Text>
         </View>
 
@@ -202,7 +202,7 @@ export default function Profile() {
               <Text style={{ fontSize: 25, fontWeight: '800' }}>Settings</Text>
 
               <Text style={{ fontSize: 18, fontWeight: '800', marginTop: 35 }}>
-                My SoberStep Passport
+                My Nomo Vape Passport
               </Text>
 
               {/* Account Details Button */}
@@ -247,7 +247,7 @@ export default function Profile() {
 
               {/* About Section */}
               <Text style={{ fontSize: 18, fontWeight: '800', marginTop: 30 }}>
-                About SoberStep
+                About Nomo Vape
               </Text>
 
               {/* Terms of Service Button */}
@@ -312,23 +312,23 @@ export default function Profile() {
               <Text style={{ fontSize: 16, color: '#333', lineHeight: 22 }}>
                 {/* Replace with your full Terms of Service text */}
                 {`
-                SoberStep Terms and Conditions
+                Nomo Vape Terms and Conditions
                 Effective Date: 25/07/2025 BST
                 Last Updated: 25/07/2025 BST
 
                 1. Introduction
-                Welcome to SoberStep ("we", "us", "our"). These Terms and Conditions ("Terms") govern your use of the SoberStep mobile application ("App") and any related services provided through it. By downloading, accessing or using the App, you confirm that you have read, understood and agree to be bound by these Terms.
+                Welcome to Nomo Vape ("we", "us", "our"). These Terms and Conditions ("Terms") govern your use of the Nomo Vape mobile application ("App") and any related services provided through it. By downloading, accessing or using the App, you confirm that you have read, understood and agree to be bound by these Terms.
 
                 If you do not agree to these Terms, please do not use the App.
 
                 2. Who We Are
-                SoberStep is a UK-based digital health and wellbeing application designed to support individuals in their journey to quit vaping. Trading under the name SoberStep.
+                Nomo Vape is a UK-based digital health and wellbeing application designed to support individuals in their journey to quit vaping. Trading under the name Nomo Vape.
 
                 For all enquiries, including legal or support-related matters, please contact us at:
                 Email: max.im.enterprize@gmail.com
 
                 3. Eligibility
-                To use SoberStep, you must be at least 13 years old. By using the App, you confirm that you meet this age requirement. If you are under 13, do not use this App. By using the App, you warrant that you are of legal age and that you have the capacity to enter into a binding agreement.
+                To use Nomo Vape, you must be at least 13 years old. By using the App, you confirm that you meet this age requirement. If you are under 13, do not use this App. By using the App, you warrant that you are of legal age and that you have the capacity to enter into a binding agreement.
 
                 4. Account Registration
                 To use certain features of the App, you may be required to register and provide personal information including, but not limited to, your name, email, birthday, gender, and information about your vaping habits. You agree that the information you provide is accurate and up-to-date.
@@ -354,17 +354,17 @@ export default function Profile() {
                 We reserve the right to suspend or terminate accounts that violate these Terms.
 
                 7. Health Disclaimer
-                SoberStep is designed as a motivational tool and self-monitoring aid. It is not a medical device and does not provide medical advice. You should consult a medical professional before making any health decisions or quitting substances if you have underlying conditions.
+                Nomo Vape is designed as a motivational tool and self-monitoring aid. It is not a medical device and does not provide medical advice. You should consult a medical professional before making any health decisions or quitting substances if you have underlying conditions.
 
                 Use of the App is entirely at your own risk. We accept no liability for any consequences arising from decisions made based on the information provided by the App.
 
                 8. Intellectual Property
-                All content, trademarks, logos, graphics, and code within the App are the intellectual property of SoberStep or its licensors. You are granted a limited, non-exclusive, non-transferable licence to use the App for personal, non-commercial purposes only.
+                All content, trademarks, logos, graphics, and code within the App are the intellectual property of Nomo Vape or its licensors. You are granted a limited, non-exclusive, non-transferable licence to use the App for personal, non-commercial purposes only.
 
                 You may not copy, distribute, modify, reverse-engineer, or create derivative works of the App without prior written consent.
 
                 9. Limitation of Liability
-                To the fullest extent permitted by UK law, SoberStep shall not be liable for:
+                To the fullest extent permitted by UK law, Nomo Vape shall not be liable for:
 
                 Any indirect, incidental, special, or consequential damages;
 
@@ -390,7 +390,7 @@ export default function Profile() {
                 13. Contact
                 For any questions, concerns, or legal notices, please contact:
 
-                SoberStep
+                Nomo Vape
                 Email: max.im.enterprize@gmail.com
 
                 (End of Terms of Service)
@@ -408,12 +408,12 @@ export default function Profile() {
                 Privacy Policy
                 Last updated: 25/07/2025 (BST)
 
-                Welcome to Sober Step ("we", "us", "our"). This Privacy Policy explains how we collect, use, store, and protect your personal data when you use our mobile application ("Sober Step", "the App") available via the Google Play Store.
+                Welcome to Nomo Vape ("we", "us", "our"). This Privacy Policy explains how we collect, use, store, and protect your personal data when you use our mobile application ("Nomo Vape", "the App") available via the Google Play Store.
 
                 By using the App, you agree to the practices outlined in this Privacy Policy. If you do not agree, please do not use the App.
 
                 1. Who We Are
-                Sober Step is a mobile wellness app designed to help users quit or reduce vaping. For all data protection matters, you can contact us at:
+                Nomo Vape is a mobile wellness app designed to help users quit or reduce vaping. For all data protection matters, you can contact us at:
 
                 Email: max.im.enterprize@gmail.com
                 Location: United Kingdom (UK)
@@ -421,7 +421,7 @@ export default function Profile() {
                 We are the data controller of your personal information for the purposes of the UK General Data Protection Regulation (UK GDPR).
 
                 2. Data We Collect
-                We collect the following types of personal information when you use Sober Step:
+                We collect the following types of personal information when you use Nomo Vape:
 
                 a. Account & Authentication Data
                 Email address
@@ -523,7 +523,7 @@ export default function Profile() {
                 We will respond within 30 days.
 
                 8. Children’s Privacy
-                You must be at least 13 years old to use Sober Step.
+                You must be at least 13 years old to use Nomo Vape.
 
                 We do not knowingly collect data from users under 13. If we learn that we have collected personal information from someone under 13, we will delete that data immediately.
 

@@ -371,47 +371,6 @@ export default function Index() {
           </Text>
         </View>
 
-        {/* SECTION: MONEY SAVED */}
-        <Text style={{ marginTop: 0, marginLeft: 20, fontSize: 27, marginBottom: 25, fontWeight: '700', color: '#2E2E2E' }}>
-          You saved 🤑:
-        </Text>
-
-        <View
-          style={{
-            backgroundColor: '#F1F6FA',
-            marginHorizontal: 20,
-            height: 75,
-            marginBottom: 25,
-            borderRadius: 20,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Text style={{ fontSize: 29, fontWeight: '700', color: '#2E2E2E' }}>£{moneySaved}</Text>
-        </View>
-
-        {/* SECTION: ANNUAL SAVINGS */}
-        <Text style={{ marginTop: 0, marginLeft: 20, fontSize: 27, marginBottom: 25, fontWeight: '700', color: '#2E2E2E' }}>
-          For a total of 😱:
-        </Text>
-
-        <View
-          style={{
-            backgroundColor: '#F1F6FA',
-            marginHorizontal: 20,
-            height: 110,
-            marginBottom: 25,
-            borderRadius: 20,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Text style={{ fontSize: 29, fontWeight: '700', color: '#2E2E2E' }}>£{totalAnnualSavings}</Text>
-          <Text style={{ fontSize: 29, color: '#2E2E2E', marginTop: 4, fontWeight: 700 }}>
-            in annual savings
-          </Text>
-        </View>
-
         {/* SECTION: LIFE REGAINED */}
         <Text style={{ marginTop: 0, marginLeft: 20, fontSize: 27, marginBottom: 25, fontWeight: '700', color: '#2E2E2E' }}>
           Life Regained ❤️:
@@ -432,6 +391,121 @@ export default function Index() {
             {lifeRegainedHours}H
           </Text>
         </View>
+
+        {/* SECTION: LUNG RECOVERY */}
+        <Text
+          style={{
+            marginTop: 0,
+            marginLeft: 20,
+            fontSize: 27,
+            marginBottom: 25,
+            fontWeight: '700',
+            color: '#2E2E2E',
+          }}
+        >
+          Lung Recovery 🫁:
+        </Text>
+
+        {(() => {
+          const totalHours = timeElapsed.totalSeconds / 3600;
+          const totalYears = totalHours / (365 * 24);
+
+          // Realistic, non-linear lung recovery capped at ~95%
+          const lungRecovery = Math.min(95 * (1 - Math.exp(-2 * totalYears)), 95).toFixed(3);
+
+          return (
+            <View
+              style={{
+                backgroundColor: '#F1F6FA',
+                marginHorizontal: 20,
+                height: 75,
+                marginBottom: 25,
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ fontSize: 29, fontWeight: '700', color: '#2E2E2E' }}>
+                {lungRecovery}% recovered
+              </Text>
+              <Text style={{ fontSize: 15, color: '#777', marginTop: 4 }}>
+                (Max realistic recovery: 95%)
+              </Text>
+            </View>
+          );
+        })()}
+
+        {/* SECTION: HEART RECOVERY */}
+        <Text
+          style={{
+            marginTop: 0,
+            marginLeft: 20,
+            fontSize: 27,
+            marginBottom: 25,
+            fontWeight: '700',
+            color: '#2E2E2E',
+          }}
+        >
+          Heart Recovery ❤️:
+        </Text>
+
+        {(() => {
+          const totalHours = timeElapsed.totalSeconds / 3600;
+          const heartRecovery = Math.min((totalHours / (5 * 365 * 24)) * 100, 100).toFixed(3);
+          return (
+            <View
+              style={{
+                backgroundColor: '#F1F6FA',
+                marginHorizontal: 20,
+                height: 75,
+                marginBottom: 25,
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ fontSize: 29, fontWeight: '700', color: '#2E2E2E' }}>
+                {heartRecovery}% recovered
+              </Text>
+            </View>
+          );
+        })()}
+
+        {/* SECTION: BRAIN RECOVERY */}
+        <Text
+          style={{
+            marginTop: 0,
+            marginLeft: 20,
+            fontSize: 27,
+            marginBottom: 25,
+            fontWeight: '700',
+            color: '#2E2E2E',
+          }}
+        >
+          Brain Recovery 🧠:
+        </Text>
+
+        {(() => {
+          const totalHours = timeElapsed.totalSeconds / 3600;
+          const brainRecovery = Math.min((totalHours / (3 * 365 * 24)) * 100, 100).toFixed(3);
+          return (
+            <View
+              style={{
+                backgroundColor: '#F1F6FA',
+                marginHorizontal: 20,
+                height: 75,
+                marginBottom: 25,
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ fontSize: 29, fontWeight: '700', color: '#2E2E2E' }}>
+                {brainRecovery}% recovered
+              </Text>
+            </View>
+          );
+        })()}
       </ScrollView>
     </LinearGradient>
   );

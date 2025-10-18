@@ -1,12 +1,13 @@
+// metro.config.js — Expo SDK 54 compatible
 const { getDefaultConfig } = require('expo/metro-config');
-const exclusionList = require('metro-config/src/defaults/exclusionList');
 const path = require('path');
 
-const defaultConfig = getDefaultConfig(__dirname);
+// Load the default Expo Metro configuration
+const config = getDefaultConfig(__dirname);
 
-// Add Node.js core module shims
-defaultConfig.resolver.extraNodeModules = {
-  ...defaultConfig.resolver.extraNodeModules,
+// --- Add Node.js core module shims ---
+config.resolver.extraNodeModules = {
+  ...config.resolver.extraNodeModules,
   events: require.resolve('events/'),
   stream: require.resolve('readable-stream'),
   buffer: require.resolve('buffer/'),
@@ -14,9 +15,9 @@ defaultConfig.resolver.extraNodeModules = {
   ws: path.resolve(__dirname, './shims/empty.js'), // 👈 Shim ws
 };
 
-// Exclude the real `ws` package from bundling (if present)
-defaultConfig.resolver.blacklistRE = exclusionList([
+// --- Exclude the real `ws` package from bundling ---
+config.resolver.blockList = [
   /node_modules\/ws\/.*/,
-]);
+];
 
-module.exports = defaultConfig;
+module.exports = config;
