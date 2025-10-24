@@ -17,6 +17,9 @@ import {
 } from "react-native";
 import ConfettiCannon from "react-native-confetti-cannon";
 
+const circleSize = 42;  // bigger circles
+const emojiSize = circleSize * 0.9;  // proportional emoji size
+
 // Store all 75 fun facts in an array
 const funFacts = [
   "Your lungs start to heal 2 weeks after quitting",
@@ -374,8 +377,10 @@ export default function Checkin() {
   const [loadingGif, setLoadingGif] = useState(true);
 
   const circleCount = 7;
-  const circleSize = 35;
+  const circleSize = 42; // slightly larger circles for better fit
+  const emojiSize = circleSize * 0.9; // keep emoji proportional
   const sidePadding = 10;
+
   const labels = getLast7DaysLabels();
 
   const [modalVisible, setModalVisible] = useState(false); // default off
@@ -886,7 +891,13 @@ export default function Checkin() {
                     }}
                   >
                     {mood?.emoji && (
-                      <Text style={{ fontSize: circleSize - 0 }}>
+                      <Text
+                        style={{
+                          fontSize: emojiSize,              // dynamic font size
+                          textAlign: "center",              // center horizontally
+                          textAlignVertical: "center",      // center vertically (Android)
+                        }}
+                      >
                         {mood.emoji === "angry" && "😡"}
                         {mood.emoji === "sad" && "😢"}
                         {mood.emoji === "disgust" && "🤢"}
@@ -896,13 +907,21 @@ export default function Checkin() {
                       </Text>
                     )}
                     {mood?.indifferent && (
-                      <Text style={{ fontSize: 12 }}>😐</Text> // fallback emoji for indifferent
+                      <Text
+                        style={{
+                          fontSize: emojiSize * 0.3,
+                          textAlign: "center",
+                          textAlignVertical: "center",
+                        }}
+                      >
+                        😐
+                      </Text>
                     )}
                   </View>
 
                   <Text
                     style={{
-                      marginTop: 5,
+                      marginTop: 0,
                       color: "#2E2E2E",
                       fontWeight: "700",
                       fontSize: 15,

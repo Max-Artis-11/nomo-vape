@@ -43,7 +43,7 @@ export default function TabsLayout() {
         {/* index.jsx -> Today */}
         <Tabs.Screen name="index" options={{
           tabBarIcon: ({ focused }) => (
-            <View style={{ alignItems: 'center', minWidth: 60 }}>
+            <View style={{ alignItems: 'center', minWidth: 70 }}>
               <FontAwesome name="square-o" size={25} color={focused ? activeColor : inactiveColor} />
               <Text style={{ fontSize: 13, color: focused ? activeColor : inactiveColor, marginTop: 4 }}>Dashboard</Text>
             </View>

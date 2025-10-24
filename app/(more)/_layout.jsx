@@ -30,7 +30,7 @@ export default function MoreLayout({ children }) {
       style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
     >
       {icon}
-      {label && <Text style={{ fontSize: 13, color: "#2E2E2E", marginTop: 4 }}>{label}</Text>}
+      {label && <Text style={{ fontSize: 13, color: "#949494", marginTop: 4 }}>{label}</Text>}
     </Pressable>
   );
 

@@ -371,26 +371,40 @@ export default function Index() {
           </Text>
         </View>
 
-        {/* SECTION: LIFE REGAINED */}
+        {/* SECTION: FITNESS BOOST */}
         <Text style={{ marginTop: 0, marginLeft: 20, fontSize: 27, marginBottom: 25, fontWeight: '700', color: '#2E2E2E' }}>
-          Life Regained ❤️:
+          Fitness Boost 💥:
         </Text>
 
-        <View
-          style={{
-            backgroundColor: '#F1F6FA',
-            marginHorizontal: 20,
-            height: 75,
-            marginBottom: 25,
-            borderRadius: 20,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Text style={{ fontSize: 29, fontWeight: '700', color: '#2E2E2E' }}>
-            {lifeRegainedHours}H
-          </Text>
-        </View>
+        {(() => {
+          const totalHours = timeElapsed.totalSeconds / 3600;
+          const totalDays = totalHours / 24;
+
+          // Fitness improves over the first 180 days (6 months)
+          // Logistic growth curve: starts slow, plateaus near 100%
+          const fitnessBoost = (100 / (1 + Math.exp(-0.03 * (totalDays - 90)))).toFixed(2);
+
+          return (
+            <View
+              style={{
+                backgroundColor: '#F1F6FA',
+                marginHorizontal: 20,
+                height: 75,
+                marginBottom: 25,
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ fontSize: 29, fontWeight: '700', color: '#2E2E2E' }}>
+                {fitnessBoost}% improved
+              </Text>
+              <Text style={{ fontSize: 15, color: '#777', marginTop: 4 }}>
+                (Based on stamina & energy recovery)
+              </Text>
+            </View>
+          );
+        })()}
 
         {/* SECTION: LUNG RECOVERY */}
         <Text

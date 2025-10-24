@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Sober Step",
-    "slug": "Sober-Step",
+    "name": "Nomo Vape",
+    "slug": "Nomo-Vape",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -32,19 +32,6 @@
     },
     "plugins": [
       "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
-          "statusBar": {
-            "style": "light",
-            "backgroundColor": "#000000"
-          }
-        }
-      ],
       "expo-font",
       "expo-video",
       "expo-web-browser",
